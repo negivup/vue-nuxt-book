@@ -1,5 +1,4 @@
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     mode: 'universal',
     head: {
@@ -73,7 +72,7 @@ module.exports = {
             }
         },
         "/chapter": {
-            target: "http://chapterup2.zhuishushenqi.com",
+            target: "http://chapter2.zhuishushenqi.com",
             changeOrigin: true,
             pathRewrite: {
                 "^/chapter": "/chapter"
@@ -86,23 +85,6 @@ module.exports = {
         },
         // extractCSS: { allChunks: true },   // css单独提取到link中
         extend(config, ctx) {
-        },
-        plugins: [
-            new MiniCssExtractPlugin({
-                filename: "[name].css",
-                chunkFilename: "[id].css"
-            })
-        ],
-        module: {
-            rules: [
-                {
-                    test: /\.css$/,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        "css-loader"
-                    ]
-                }
-            ]
         },
         postcss: {
             "plugins": {

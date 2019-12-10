@@ -53,7 +53,7 @@ export const scrollTop = {
 
     methods: {
         scroll(e) {
-            Math.abs(e.y) > 1000 ? this.showFlag = true : this.showFlag = false
+            Math.abs(e.y) > 800 ? this.showFlag = true : this.showFlag = false
         },
 
         backTop() {
