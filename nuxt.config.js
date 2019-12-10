@@ -1,4 +1,8 @@
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // 包的大小分析工具
+const Compression = require('compression-webpack-plugin')   // gzip压缩
+
+const webpack = require('webpack')
 module.exports = {
     mode: 'universal',
     head: {
@@ -86,6 +90,17 @@ module.exports = {
         // extractCSS: { allChunks: true },   // css单独提取到link中
         extend(config, ctx) {
         },
+        plugins:[
+            new webpack.ContextReplacementPlugin(
+                /moment[/\\]locale$/,
+                /zh-cn/,
+            ),
+            // new Compression({
+            //     test: /\.js$|\.html$|\.css/,    // 匹配文件名
+            //     threshold: 10240,               // 对超过10k的数据进行蒴
+            //     deleteOriginalAssets: true,    // 是否删除源文件
+            // }),
+        ],
         postcss: {
             "plugins": {
                 "postcss-write-svg": {
